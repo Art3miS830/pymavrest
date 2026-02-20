@@ -12,6 +12,7 @@ https://github.com/mavlink/mavlink2rest
 - Supports VTOL, multirotor, and other MAVLink-capable vehicles.
 - Compatible with PX4, ArduPilot, and other MAVLink firmwares.
 - Read telemetry data via HTTP and send drone commands via HTTP.
+- Built-in auth and multi-user access control (JWT + user permissions).
 - Uses `pymavlink` and `mavsdk` backends and can switch automatically when needed.
 - Highly configurable via `config.json`.
 - Easy one-command install on mini-computers like Raspberry Pi.
@@ -81,8 +82,6 @@ See `README_config.md` for full details. Main sections:
 - `rest_api`
   - `port`, `host`, `global_prefix`, `global_timeout`
   - `as_https`, `ssl_keyfile_dir`, `ssl_certfile_dir`
-- `services`
-  - Optional per-service toggles/settings (`enabled`, `setting`)
 - `auth`
   - `enabled`, `jwt_secret`, `jwt_token_expire_minutes`, `jwt_algorithm`
   - `users[]` with `username`, `password`, `permission`, `active`, `is_admin`
@@ -92,8 +91,6 @@ See `README_config.md` for full details. Main sections:
 - `server`
   - `base_url`
   - `auth`: `username`, `password`, `route`, `type`
-- `map` (optional)
-  - `shapefile_path`
 - `sms`
   - `recipient`
 
