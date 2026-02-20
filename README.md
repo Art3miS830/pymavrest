@@ -1,35 +1,35 @@
-![pymavrest logo](assets/logo.png)
+![pymavrest logo](./assets/logo.png)
 
 # pymavrest
 
-`pymavrest` is a high-performance REST server for MAVLink-based drones.
+`pymavrest` is a high-performance REST server for MAVLink-based drones 🚁.
 It lets you read telemetry over HTTP and send flight commands over HTTP.
 
-It is a Python alternative to `mavlink2rest` with a strong async architecture:
+It is a Python alternative to `mavlink2rest` with a strong async architecture 🛰️:
 https://github.com/mavlink/mavlink2rest
 
-## Project strengths
+## Project strengths ✨
 
-- Fully async and high performance.
-- Supports VTOL, multirotor, and other MAVLink-capable vehicles.
-- Compatible with PX4, ArduPilot, and other MAVLink firmwares.
-- Read telemetry data via HTTP and send drone commands via HTTP.
-- Built-in auth and multi-user access control (JWT + user permissions).
-- Uses `pymavlink` and `mavsdk` backends and can switch automatically when needed.
-- Highly configurable via `config.json`.
-- Easy one-command install on mini-computers like Raspberry Pi.
+- Fully async and high performance ⚡.
+- Supports VTOL, multirotor, and other MAVLink-capable vehicles 🚁.
+- Compatible with PX4, ArduPilot, and other MAVLink firmwares 🛩️.
+- Read telemetry data via HTTP and send drone commands via HTTP 🌐.
+- Built-in auth and multi-user access control (JWT + user permissions) 🔐.
+- Uses `pymavlink` and `mavsdk` backends and can switch automatically when needed 🔄.
+- Highly configurable via `config.json` ⚙️.
+- Easy one-command install on mini-computers like Raspberry Pi 🖥️.
 
-## Production prerequisite
+## Production prerequisite 🛫
 
 For production deployments, install and configure `mavlink-router`:
 
 https://github.com/mavlink-router/mavlink-router
 
-## Data flow and API example
+## Data flow and API example 📡
 
 Architecture:
 
-`Drone <-> mavlink-router <-> pymavrest <-> REST Clients`
+`Drone 🚁 <-> mavlink-router 📡 <-> pymavrest 🛰️ <-> REST Clients 🌐`
 
 Example request (`flight_details`):
 
@@ -40,24 +40,24 @@ curl http://localhost:8080/api/v1/messages/flight_details \
 
 Returns aggregated telemetry including:
 
-- flight mode
-- battery state
-- GPS position
-- speed and attitude
-- RC status
-- EKF status
-- connection flags
-- mission summary
+- flight mode 🧭
+- battery state 🔋
+- GPS position 📍
+- speed and attitude 🏎️
+- RC status 🎮
+- EKF status 📈
+- connection flags 🔗
+- mission summary 🗺️
 
 Note: use the port configured in `config.json` (`rest_api.port`). The default in this project is `10821`.
 
-OpenAPI docs are available at:
+OpenAPI docs are available at 📘:
 
 `http://127.0.0.1:10821/docs`
 
 The port may differ depending on your `config.json` (`rest_api.port`).
 
-## Install (one command)
+## Install (one command) ⚙️
 
 Run installer directly with `curl`:
 
@@ -67,7 +67,7 @@ curl -fsSL https://raw.githubusercontent.com/hadif1999/pymavrest/master/scripts/
 
 This installs dependencies, syncs the repo into `~/app` by default, and in production mode deploys/runs `pymavrest.service`.
 
-## Installer arguments
+## Installer arguments 🧩
 
 `scripts/install.sh` supports:
 
@@ -86,7 +86,7 @@ Help example:
 curl -fsSL https://raw.githubusercontent.com/hadif1999/pymavrest/master/scripts/install.sh | bash -s -- --help
 ```
 
-## Configure `config.json` (important for production)
+## Configure `config.json` (important for production) 🛠️
 
 Before production use, edit your `config.json` values for your environment.
 At minimum, update drone connection, auth secrets/users, server endpoints, and networking.
@@ -97,7 +97,7 @@ If running as a service, restart after config changes:
 sudo systemctl restart pymavrest
 ```
 
-## `config.json` parameters
+## `config.json` parameters 📘
 
 See `README_config.md` for full details. Main sections:
 
@@ -128,7 +128,7 @@ See `README_config.md` for full details. Main sections:
 - `sms`
   - `recipient`
 
-## Run manually (test or production)
+## Run manually (test or production) ▶️
 
 You can run directly with `uv run main.py` for testing or production-like manual operation:
 
