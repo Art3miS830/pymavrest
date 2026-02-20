@@ -1,3 +1,5 @@
+![pymavrest logo](assets/logo.png)
+
 # pymavrest
 
 `pymavrest` is a high-performance REST server for MAVLink-based drones.
@@ -22,6 +24,38 @@ https://github.com/mavlink/mavlink2rest
 For production deployments, install and configure `mavlink-router`:
 
 https://github.com/mavlink-router/mavlink-router
+
+## Data flow and API example
+
+Architecture:
+
+`Drone <-> mavlink-router <-> pymavrest <-> REST Clients`
+
+Example request (`flight_details`):
+
+```bash
+curl http://localhost:8080/api/v1/messages/flight_details \
+  -H "Authorization: Bearer <token>"
+```
+
+Returns aggregated telemetry including:
+
+- flight mode
+- battery state
+- GPS position
+- speed and attitude
+- RC status
+- EKF status
+- connection flags
+- mission summary
+
+Note: use the port configured in `config.json` (`rest_api.port`). The default in this project is `10821`.
+
+OpenAPI docs are available at:
+
+`http://127.0.0.1:10821/docs`
+
+The port may differ depending on your `config.json` (`rest_api.port`).
 
 ## Install (one command)
 
