@@ -1,0 +1,2 @@
+- run project and fix bugs
+- change install.sh to support changes
